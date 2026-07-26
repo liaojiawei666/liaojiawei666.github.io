@@ -1,12 +1,21 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
 import starlightGiscus from 'starlight-giscus';
 import drawioDiagrams from './scripts/drawio-diagrams.mjs';
 
 export default defineConfig({
   site: 'https://liaojiawei666.github.io',
   output: 'static',
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+    }),
+  },
   vite: {
     plugins: [drawioDiagrams()],
   },
@@ -44,7 +53,7 @@ export default defineConfig({
         baseUrl:
           'https://github.com/liaojiawei666/liaojiawei666.github.io/edit/main/',
       },
-      customCss: ['./src/styles/custom.css'],
+      customCss: ['katex/dist/katex.min.css', './src/styles/custom.css'],
       lastUpdated: true,
       pagination: true,
       credits: true,
