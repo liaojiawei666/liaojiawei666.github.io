@@ -1,9 +1,8 @@
 ---
 title: Transformer 论文解析：Attention Is All You Need
 date: 2026-07-13
+description: 从整体架构、注意力机制到训练设置，系统梳理 Transformer 原始论文。
 ---
-
-# Transformer 论文解析：Attention Is All You Need
 
 > 原论文：[Attention Is All You Need](https://arxiv.org/abs/1706.03762)（Vaswani et al., NeurIPS 2017）
 >
