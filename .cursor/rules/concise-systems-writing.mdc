@@ -1,0 +1,18 @@
+---
+description: Apply the project's concise, diagram-first writing workflow to documentation articles.
+globs: "src/content/docs/**/*.{md,mdx}"
+alwaysApply: false
+---
+
+Follow the canonical project skill:
+
+@.agents/skills/concise-systems-writing/SKILL.md
+
+If the referenced file is not loaded automatically, apply these fallback rules:
+
+- State the answer or central claim in the opening paragraph.
+- Keep each paragraph focused on one idea and remove filler or repetition.
+- Use draw.io only when a diagram materially clarifies architecture, flow, state, hierarchy, or relationships.
+- Keep both the editable `.drawio` source and generated `.drawio.svg`.
+- Preserve the site's frontmatter and navigation conventions, then run the production build.
+- Do not commit or publish unless the user explicitly asks.

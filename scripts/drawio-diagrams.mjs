@@ -18,6 +18,14 @@ const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const sourceRoot = join(projectRoot, 'src', 'diagrams');
 const outputRoot = join(projectRoot, 'public', 'diagrams');
 const manifestPath = join(outputRoot, '.drawio-manifest.json');
+// draw.io Desktop 是 Electron 应用，每次导出都会在 user-data 与 cache 目录里
+// 写入大量文件。该目录若位于 dev server 的监听范围内，Windows 的
+// ReadDirectoryChangesW 会因缓冲区溢出而失效，导致文件监听永久停止工作。
+// node_modules 默认被 Vite 的 watcher 忽略，因此放在这里。
+const drawioRuntimeRoot = join(projectRoot, 'node_modules', '.cache', 'drawio');
+const drawioUserDataRoot = join(drawioRuntimeRoot, 'user-data');
+const drawioCacheRoot = join(drawioRuntimeRoot, 'cache');
+const isCodexSandbox = Boolean(process.env.CODEX_PERMISSION_PROFILE);
 
 const defaultManifest = {
   version: 1,
@@ -121,6 +129,8 @@ async function findDrawioBinary() {
 
 function runDrawio(binary, sourcePath, temporaryOutput) {
   const args = [
+    `--user-data-dir=${drawioUserDataRoot}`,
+    `--disk-cache-dir=${drawioCacheRoot}`,
     '--export',
     '--format',
     'svg',
@@ -131,6 +141,16 @@ function runDrawio(binary, sourcePath, temporaryOutput) {
     temporaryOutput,
     sourcePath,
   ];
+
+  if (process.platform === 'win32') {
+    args.push('--disable-gpu');
+    if (isCodexSandbox) {
+      // Codex 的受限 Windows 会让 Electron GPU sandbox 无法加载依赖 DLL。
+      // --disable-gpu 仍可能启动软件合成 GPU 子进程，因此还要单独关闭
+      // Chromium 的 GPU sandbox。外层 Codex sandbox 仍然限制此进程。
+      args.push('--disable-gpu-sandbox', '--no-sandbox');
+    }
+  }
 
   return new Promise((resolvePromise, rejectPromise) => {
     const child = spawn(binary, args, {
@@ -194,6 +214,8 @@ export async function syncDiagram(sourcePath, options = {}) {
   }
 
   await mkdir(dirname(outputPath), { recursive: true });
+  await mkdir(drawioUserDataRoot, { recursive: true });
+  await mkdir(drawioCacheRoot, { recursive: true });
   const temporaryOutput = `${outputPath}.tmp.svg`;
   await rm(temporaryOutput, { force: true });
 

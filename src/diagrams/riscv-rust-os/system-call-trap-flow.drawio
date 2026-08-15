@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="31.0.2">
+  <diagram name="system-call-layers">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="680" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="系统调用中的用户态与内核态" style="text;html=1;align=left;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#17233c;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="760" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="用户态" style="swimlane;startSize=40;horizontal=1;rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;swimlaneFillColor=#f8fbff;strokeColor=#6c8ebf;strokeWidth=2;fontSize=18;fontStyle=1;fontColor=#1e3a8a;container=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="1220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="用户发起系统调用" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1e3a8a;" vertex="1" parent="3">
+          <mxGeometry x="80" y="70" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="内核态" style="swimlane;startSize=40;horizontal=1;rounded=1;html=1;whiteSpace=wrap;fillColor=#d5e8d4;swimlaneFillColor=#fbfefb;strokeColor=#82b366;strokeWidth=2;fontSize=18;fontStyle=1;fontColor=#274e13;container=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="1220" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="保存上下文" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontColor=#7f6000;" vertex="1" parent="5">
+          <mxGeometry x="80" y="90" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="内核执行" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontColor=#274e13;" vertex="1" parent="5">
+          <mxGeometry x="480" y="90" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="恢复上下文" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontColor=#581c87;" vertex="1" parent="5">
+          <mxGeometry x="880" y="90" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="4" target="6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="6" target="7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="7" target="8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

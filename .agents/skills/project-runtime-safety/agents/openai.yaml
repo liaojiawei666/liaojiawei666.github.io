@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Runtime Safety"
+  short_description: "Safely avoid and stop local project servers"
+  default_prompt: "Use $project-runtime-safety when validating or temporarily running this project."

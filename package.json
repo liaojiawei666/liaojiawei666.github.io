@@ -5,10 +5,11 @@
   "type": "module",
   "packageManager": "pnpm@11.9.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "node scripts/project-server.mjs dev",
+    "start": "node scripts/project-server.mjs dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "node scripts/project-server.mjs preview",
+    "stop": "node scripts/project-server.mjs stop",
     "diagrams:sync": "node scripts/drawio-diagrams.mjs"
   },
   "dependencies": {

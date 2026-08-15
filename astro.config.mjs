@@ -10,6 +10,9 @@ import drawioDiagrams from './scripts/drawio-diagrams.mjs';
 export default defineConfig({
   site: 'https://liaojiawei666.github.io',
   output: 'static',
+  redirects: {
+    '/': '/projects/riscv-rust-os/01-overview/',
+  },
   markdown: {
     processor: unified({
       remarkPlugins: [remarkMath],
@@ -80,35 +83,36 @@ export default defineConfig({
         {
           label: '项目',
           items: [
-            { label: '概览', link: '/projects/' },
             {
-              label: '个人技术手记',
-              link: '/projects/personal-knowledge-base/',
-              badge: { text: '进行中', variant: 'tip' },
+              label: '从零开发一个操作系统（RISC-V + Rust）',
+              collapsed: false,
+              items: [
+                {
+                  label: '第一章：概述',
+                  link: '/projects/riscv-rust-os/01-overview/',
+                },
+                {
+                  label: '第二章：特权级与系统调用',
+                  link: '/projects/riscv-rust-os/02-privilege-levels/',
+                },
+                {
+                  label: '第三章：时钟中断与任务调度',
+                  link: '/projects/riscv-rust-os/03-timer-interrupt-and-scheduling/',
+                },
+                {
+                  label: 'RISC-V 核心手册',
+                  link: '/projects/riscv-rust-os/riscv-introduction/',
+                },
+              ],
             },
           ],
         },
         {
           label: '日志',
           items: [
-            { label: '概览', link: '/logs/' },
             {
-              label: '重建个人技术手记',
-              link: '/logs/2026/07/site-rebuild/',
-            },
-          ],
-        },
-        {
-          label: '随记',
-          items: [
-            { label: '概览', link: '/notes/' },
-            {
-              label: '让记录保持可检索',
-              link: '/notes/writing/searchable-notes/',
-            },
-            {
-              label: 'Transformer 论文解析',
-              link: '/notes/ai/transformer/',
+              label: '2026-08-15 傅里叶变换',
+              link: '/logs/2026-08-15-fourier-transform/',
             },
           ],
         },

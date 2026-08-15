@@ -36,3 +36,114 @@ status: active
 ![__switch 保存当前任务并加载下一个任务的过程](/diagrams/riscv-rust-os/task-switch-process.drawio.svg)
 
 它先把 CPU 寄存器保存到 `TaskContext[i]`，再从 `TaskContext[j]` 加载寄存器。加载完成后，CPU 的 `sp` 指向任务 `j` 的内核栈，`ret` 沿任务 `j` 的 `ra` 继续执行。
+
+## 3. 时钟中断的硬件基础
+
+### 3.1 时间计数器
+
+`time` 是只读 CSR，表示平台时间：
+
+- 所有 hart 共享同一时间轴。
+- 频率由设备树 `timebase-frequency` 提供，不能写死。
+- 持续递增，但 OS 启动时不一定从 0 开始。
+
+### 3.2 定时器比较值
+
+`mtimecmp` 是 M-mode 控制的比较器。当：
+
+```text
+time >= mtimecmp
+```
+
+定时器到期。S-mode 通常不能直接写 `mtimecmp`，需要通过 SBI 设置下一次触发时间：
+
+```text
+读取 time → 计算下一触发时间 → SBI set_timer
+```
+
+### 3.3 中断状态与单项开关
+
+定时器到期后，S 级时钟中断进入 pending 状态：
+
+```text
+sip.STIP = 1
+```
+
+`sie` 控制具体中断类型：
+
+```text
+sie.STIE：S 级时钟中断
+sie.SEIE：S 级外部中断
+sie.SSIE：S 级软件中断
+```
+
+对于时钟中断：
+
+```text
+STIE = 0：保持 pending，不进入 Trap
+STIE = 1：满足特权级条件时进入 Trap
+```
+
+### 3.4 `scause` 中的时钟中断
+
+S 级时钟中断的 interrupt code 为 5。`scause` 最高位为 1 表示中断，其余位保存编号：
+
+```text
+RV64 scause = (1 << 63) | 5
+             = 0x8000000000000005
+```
+
+Rust 中可以匹配为：
+
+```rust
+Trap::Interrupt(Interrupt::SupervisorTimer)
+```
+
+### 3.5 S-mode 全局开关
+
+`sstatus.SIE` 是 S-mode 的全局中断开关，只影响中断，不影响异常。
+
+```text
+当前在 U-mode：
+STIE = 1 即可响应 S 级时钟中断
+不受 SIE 阻挡
+
+当前在 S-mode：
+STIE = 1 且 SIE = 1
+才能响应 S 级时钟中断
+```
+
+可以记为：
+
+```text
+sie.STIE    = 时钟中断单项开关
+sstatus.SIE = 当前处于 S-mode 时的总开关
+当前特权级  = 决定 SIE 是否参与判断
+```
+
+### 3.6 Trap 时的中断状态保存
+
+发生 Trap 时，硬件自动执行：
+
+```text
+SPIE ← SIE
+SIE  ← 0
+```
+
+执行 `sret` 时，硬件自动执行：
+
+```text
+SIE  ← SPIE
+SPIE ← 1
+```
+
+`SPIE` 用于保存 Trap 前的 `SIE`。
+
+### 3.7 特权级关系
+
+```text
+高特权级可以抢占低特权级
+低特权级不能直接处理高特权级事件
+```
+
+中断可以通过硬件委托或固件转换交给较低特权级处理。例如 OpenSBI 管理 M-mode 定时器，并向 S-mode 提供时钟中断。

@@ -6,10 +6,10 @@
 
 ```text
 src/content/docs/
-├── projects/  项目文档
-├── logs/      按时间组织的日志
-├── notes/     按主题组织的随记
-└── appendix/  写作说明和附录
+├── projects/
+│   └── riscv-rust-os/  从零开发一个操作系统（RISC-V + Rust）
+├── logs/               日志
+└── notes/              随记
 ```
 
 ## 开发

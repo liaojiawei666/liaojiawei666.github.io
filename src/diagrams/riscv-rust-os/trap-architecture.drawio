@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="31.0.2">
+  <diagram name="trap-architecture">
+    <mxGraphModel dx="1420" dy="940" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1420" pageHeight="940" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="2" value="Trap 处理的结构：谁保存上下文，谁做决策" style="text;html=1;align=left;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#17233c;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="10" value="用户态（U 模式）" style="swimlane;startSize=38;rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;swimlaneFillColor=#f8fbff;strokeColor=#6c8ebf;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#1e3a8a;container=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="用户程序&#xa;执行 ecall，或触发非法指令 / 越界访存" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1e3a8a;" vertex="1" parent="10">
+          <mxGeometry x="60" y="58" width="380" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="用户栈 USER_STACK&#xa;局部变量与函数栈帧" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1e3a8a;" vertex="1" parent="10">
+          <mxGeometry x="480" y="58" width="380" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="看不到内核栈&#xa;也不知道自己被打断过" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=14;fillColor=none;strokeColor=#b0b8c4;dashed=1;fontColor=#5a6472;" vertex="1" parent="10">
+          <mxGeometry x="900" y="58" width="380" height="82" as="geometry" />
+        </mxCell>
+
+        <mxCell id="20" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#d79b00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="244" as="sourcePoint" />
+            <mxPoint x="300" y="306" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="ecall / 异常：特权级 U → S" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#7c4a00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="255" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1120" y="306" as="sourcePoint" />
+            <mxPoint x="1120" y="244" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="sret 之后：特权级 S → U" style="text;html=1;align=right;verticalAlign=middle;fontSize=15;fontColor=#581c87;" vertex="1" parent="1">
+          <mxGeometry x="720" y="255" width="380" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="30" value="硬件（进入与返回时自动完成；不保存任何通用寄存器）" style="swimlane;startSize=38;rounded=1;html=1;whiteSpace=wrap;fillColor=#ffe6cc;swimlaneFillColor=#fffaf5;strokeColor=#d79b00;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#7c4a00;container=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="1340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="stvec&#xa;Trap 入口地址，Direct 模式" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;fontColor=#7c4a00;" vertex="1" parent="30">
+          <mxGeometry x="60" y="58" width="380" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="sepc / scause / stval&#xa;回哪条指令、为什么进来" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;fontColor=#7c4a00;" vertex="1" parent="30">
+          <mxGeometry x="480" y="58" width="380" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="sstatus.SPP / SPIE&#xa;原特权级与中断状态" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;fontColor=#7c4a00;" vertex="1" parent="30">
+          <mxGeometry x="900" y="58" width="380" height="82" as="geometry" />
+        </mxCell>
+
+        <mxCell id="40" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#d79b00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="474" as="sourcePoint" />
+            <mxPoint x="300" y="536" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41" value="pc ← stvec，跳到 Trap 入口" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#7c4a00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="485" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="42" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1120" y="536" as="sourcePoint" />
+            <mxPoint x="1120" y="474" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43" value="执行 sret：特权级 ← SPP，pc ← sepc" style="text;html=1;align=right;verticalAlign=middle;fontSize=15;fontColor=#581c87;" vertex="1" parent="1">
+          <mxGeometry x="700" y="485" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="50" value="内核态（S 模式）" style="swimlane;startSize=38;rounded=1;html=1;whiteSpace=wrap;fillColor=#d5e8d4;swimlaneFillColor=#fbfefb;strokeColor=#82b366;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#274e13;container=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="1340" height="370" as="geometry" />
+        </mxCell>
+
+        <mxCell id="51" value="上下文保存与恢复" style="swimlane;startSize=34;rounded=1;html=1;whiteSpace=wrap;fillColor=#f5f5f5;swimlaneFillColor=#fcfcfc;strokeColor=#666666;strokeWidth=2;fontSize=14;fontStyle=1;fontColor=#333333;container=1;pointerEvents=0;" vertex="1" parent="50">
+          <mxGeometry x="50" y="56" width="340" height="292" as="geometry" />
+        </mxCell>
+        <mxCell id="52" value="保存上下文&#xa;__alltraps" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontColor=#333333;" vertex="1" parent="51">
+          <mxGeometry x="25" y="52" width="290" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="53" value="恢复上下文并返回&#xa;__restore + sret" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontColor=#333333;" vertex="1" parent="51">
+          <mxGeometry x="25" y="172" width="290" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="60" value="内核栈 KERNEL_STACK" style="swimlane;startSize=34;rounded=1;html=1;whiteSpace=wrap;fillColor=#fff2cc;swimlaneFillColor=#fffdf5;strokeColor=#d6b656;strokeWidth=2;fontSize=14;fontStyle=1;fontColor=#7f6000;container=1;pointerEvents=0;" vertex="1" parent="50">
+          <mxGeometry x="430" y="56" width="340" height="292" as="geometry" />
+        </mxCell>
+        <mxCell id="61" value="TrapContext（34 项）&#xa;&#xa;x[0] … x[31]&#xa;sstatus&#xa;sepc" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;fontColor=#7f6000;" vertex="1" parent="60">
+          <mxGeometry x="25" y="55" width="290" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="70" value="Trap 处理" style="swimlane;startSize=34;rounded=1;html=1;whiteSpace=wrap;fillColor=#d5e8d4;swimlaneFillColor=#fbfefb;strokeColor=#82b366;strokeWidth=2;fontSize=14;fontStyle=1;fontColor=#274e13;container=1;pointerEvents=0;" vertex="1" parent="50">
+          <mxGeometry x="810" y="56" width="480" height="292" as="geometry" />
+        </mxCell>
+        <mxCell id="71" value="trap_handler&#xa;读 scause 分发" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontColor=#274e13;" vertex="1" parent="70">
+          <mxGeometry x="20" y="105" width="190" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="72" value="syscall&#xa;sys_write / sys_exit" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontColor=#274e13;" vertex="1" parent="70">
+          <mxGeometry x="255" y="52" width="205" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="73" value="run_next_app&#xa;终止，加载下一个" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontColor=#7f1d1d;" vertex="1" parent="70">
+          <mxGeometry x="255" y="172" width="205" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="74" value="scause = 8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=13;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="71" target="72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="75" value="致命异常" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=13;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="71" target="73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="80" value="写入" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;fontSize=13;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="52" target="61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="81" value="读回" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=0;exitY=0.85;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=13;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="61" target="53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="82" value="a0 指向它" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;startArrow=block;startFill=1;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=13;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="61" target="71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

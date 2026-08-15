@@ -1,4 +1,53 @@
 {
   "version": 1,
-  "diagrams": {}
+  "diagrams": {
+    "riscv-rust-os/riscv-software-stack.drawio": {
+      "sha256": "792fd7f4423fbaa9fca0fe018c701e2985304e63814ab11e631669c14d2df6b6",
+      "output": "riscv-rust-os/riscv-software-stack.drawio.svg"
+    },
+    "riscv-rust-os/sv39-address-translation.drawio": {
+      "sha256": "3cf52ae18785f66290c307b2b66aec7853468f0a461a763f156a5d5596819775",
+      "output": "riscv-rust-os/sv39-address-translation.drawio.svg"
+    },
+    "riscv-rust-os/trap-flow.drawio": {
+      "sha256": "a801b481471a3b0075790b89735bcb6071bb7517794b874be575c3c7b50629ef",
+      "output": "riscv-rust-os/trap-flow.drawio.svg"
+    },
+    "riscv-rust-os/sstatus-fields.drawio": {
+      "sha256": "4dd76bf7aac70db77d493756fecb864823b91ba9531ad863e9a955c6301fca8a",
+      "output": "riscv-rust-os/sstatus-fields.drawio.svg"
+    },
+    "riscv-rust-os/system-call-trap-flow.drawio": {
+      "sha256": "e77f607bcb866cc0c4af5344f64aa8b5cd5fe5c5c7e796780074ca5d66493075",
+      "output": "riscv-rust-os/system-call-trap-flow.drawio.svg"
+    },
+    "riscv-rust-os/trap-two-outcomes.drawio": {
+      "sha256": "835372b8d26a40ae418dfec012e97629330007abe42cb1cf6a4cb3f910b34f06",
+      "output": "riscv-rust-os/trap-two-outcomes.drawio.svg"
+    },
+    "riscv-rust-os/trap-context-stack.drawio": {
+      "sha256": "3be243c4bd64caefecddd37abd7643ba92887e98137655c05a32aea74f427213",
+      "output": "riscv-rust-os/trap-context-stack.drawio.svg"
+    },
+    "riscv-rust-os/trap-architecture.drawio": {
+      "sha256": "38eb41d1c388b3c04fb99b5b7f8e26ee52c59290f164e08abe0b455ad9e8ad03",
+      "output": "riscv-rust-os/trap-architecture.drawio.svg"
+    },
+    "riscv-rust-os/task-memory-layout.drawio": {
+      "sha256": "8c9436e69983bbe4b63e6fb395cec27896627e1786c9b2c37d8fb0d9ea7965cd",
+      "output": "riscv-rust-os/task-memory-layout.drawio.svg"
+    },
+    "riscv-rust-os/task-switch-process.drawio": {
+      "sha256": "bc8b5b830368beaa822d6c0fe2e56b1806b31eecf43bb671ee1633d57702c572",
+      "output": "riscv-rust-os/task-switch-process.drawio.svg"
+    },
+    "riscv-rust-os/task-context-pointers.drawio": {
+      "sha256": "bacdc2f7a25cafb4dee9b8e63dd805de4c1b79699491be6a49408aed6ae51ea9",
+      "output": "riscv-rust-os/task-context-pointers.drawio.svg"
+    },
+    "fourier-transform/function-inner-product-sampling.drawio": {
+      "sha256": "c286d9b1f131b156e1c9e2a8538b59e3ae5a5c7375d222d7ff3dae5f6137eef0",
+      "output": "fourier-transform/function-inner-product-sampling.drawio.svg"
+    }
+  }
 }

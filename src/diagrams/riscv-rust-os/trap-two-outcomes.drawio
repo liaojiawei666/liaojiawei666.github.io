@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="31.0.2">
+  <diagram name="trap-two-outcomes">
+    <mxGraphModel dx="1400" dy="760" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1560" pageHeight="640" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="2" value="同样是进入内核，Trap 的两种结局" style="text;html=1;align=left;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#17233c;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="900" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="10" value="① 异常：内核终止程序 A，转去运行程序 B" style="swimlane;startSize=44;rounded=1;html=1;whiteSpace=wrap;fillColor=#eef2f7;swimlaneFillColor=#ffffff;strokeColor=#8497b0;strokeWidth=2;fontSize=17;fontStyle=1;fontColor=#17233c;container=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="700" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="用户态" style="swimlane;startSize=32;rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;swimlaneFillColor=#f8fbff;strokeColor=#6c8ebf;strokeWidth=2;fontSize=15;fontStyle=1;fontColor=#1e3a8a;container=1;pointerEvents=0;" vertex="1" parent="10">
+          <mxGeometry x="20" y="60" width="660" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="程序 A 执行中&#xa;遇到非法指令或越界访存" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1e3a8a;" vertex="1" parent="11">
+          <mxGeometry x="15" y="55" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="程序 B&#xa;从入口开始执行" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1e3a8a;" vertex="1" parent="11">
+          <mxGeometry x="445" y="55" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="内核态" style="swimlane;startSize=32;rounded=1;html=1;whiteSpace=wrap;fillColor=#d5e8d4;swimlaneFillColor=#fbfefb;strokeColor=#82b366;strokeWidth=2;fontSize=15;fontStyle=1;fontColor=#274e13;container=1;pointerEvents=0;" vertex="1" parent="10">
+          <mxGeometry x="20" y="280" width="660" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="trap_handler&#xa;读 scause，判定为致命异常" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontColor=#274e13;" vertex="1" parent="14">
+          <mxGeometry x="5" y="55" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="终止程序 A&#xa;加载下一个程序" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontColor=#7f1d1d;" vertex="1" parent="14">
+          <mxGeometry x="435" y="55" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="进入 Trap（U → S）" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="12" target="15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="sret（S → U）" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=14;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="16" target="13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="30" value="② 系统调用：内核处理后回到程序 A" style="swimlane;startSize=44;rounded=1;html=1;whiteSpace=wrap;fillColor=#eef2f7;swimlaneFillColor=#ffffff;strokeColor=#8497b0;strokeWidth=2;fontSize=17;fontStyle=1;fontColor=#17233c;container=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="800" y="80" width="700" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="用户态" style="swimlane;startSize=32;rounded=1;html=1;whiteSpace=wrap;fillColor=#dae8fc;swimlaneFillColor=#f8fbff;strokeColor=#6c8ebf;strokeWidth=2;fontSize=15;fontStyle=1;fontColor=#1e3a8a;container=1;pointerEvents=0;" vertex="1" parent="30">
+          <mxGeometry x="20" y="60" width="660" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="程序 A 执行中&#xa;执行 ecall 发起系统调用" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1e3a8a;" vertex="1" parent="31">
+          <mxGeometry x="15" y="55" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="程序 A 继续执行&#xa;ecall 的下一条指令" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1e3a8a;" vertex="1" parent="31">
+          <mxGeometry x="445" y="55" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="内核态" style="swimlane;startSize=32;rounded=1;html=1;whiteSpace=wrap;fillColor=#d5e8d4;swimlaneFillColor=#fbfefb;strokeColor=#82b366;strokeWidth=2;fontSize=15;fontStyle=1;fontColor=#274e13;container=1;pointerEvents=0;" vertex="1" parent="30">
+          <mxGeometry x="20" y="280" width="660" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="保存 TrapContext&#xa;到内核栈" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontColor=#7f6000;" vertex="1" parent="34">
+          <mxGeometry x="25" y="55" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="执行 sys_write&#xa;输出字符" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontColor=#274e13;" vertex="1" parent="34">
+          <mxGeometry x="240" y="55" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="sepc += 4&#xa;恢复 TrapContext" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=15;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontColor=#581c87;" vertex="1" parent="34">
+          <mxGeometry x="455" y="55" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="进入 Trap（U → S）" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="32" target="35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="35" target="36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="36" target="37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="41" value="sret（S → U）" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=14;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="37" target="33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
