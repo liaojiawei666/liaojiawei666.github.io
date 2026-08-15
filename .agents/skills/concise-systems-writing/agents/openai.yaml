@@ -1,0 +1,4 @@
+interface:
+  display_name: "简洁图解写作"
+  short_description: "用简短文字和按需生成的 draw.io 图表写清技术文章"
+  default_prompt: "使用 $concise-systems-writing 编写一篇简洁、图文清晰的技术文章。"
