@@ -1,0 +1,4 @@
+interface:
+  display_name: "Problem-Driven Log Writing"
+  short_description: "Discuss the outline first, then write a concise technical log"
+  default_prompt: "Use $write-problem-driven-logs to discuss the article outline first, then draft it after confirmation."

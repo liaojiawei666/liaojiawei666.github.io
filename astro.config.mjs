@@ -111,6 +111,10 @@ export default defineConfig({
           label: '日志',
           items: [
             {
+              label: '2026-08-16 RSA 加密算法',
+              link: '/logs/2026-08-16-rsa/',
+            },
+            {
               label: '2026-08-15 傅里叶变换',
               link: '/logs/2026-08-15-fourier-transform/',
             },

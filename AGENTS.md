@@ -8,9 +8,17 @@ Before starting, previewing, or browser-testing this project, read and follow:
 
 ## Article Writing
 
-When creating, rewriting, or editing an article under `src/content/docs/`, read and follow:
+When the user starts a log topic, discusses its outline, or creates, rewrites, or expands an article under `src/content/docs/logs/`, first read and follow:
+
+`/.agents/skills/write-problem-driven-logs/SKILL.md`
+
+This is the primary writing skill for logs. For a new topic or major new chapter, discuss the outline and wait for confirmation before drafting unless the user explicitly asks to write immediately.
+
+For every article under `src/content/docs/`, also read and follow:
 
 `/.agents/skills/concise-systems-writing/SKILL.md`
+
+If stylistic defaults conflict, `write-problem-driven-logs` takes priority for logs.
 
 Fallback rules:
 
