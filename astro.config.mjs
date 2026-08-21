@@ -111,6 +111,10 @@ export default defineConfig({
           label: '日志',
           items: [
             {
+              label: '2026-08-21 网络流',
+              link: '/logs/2026-08-21-network-flow/',
+            },
+            {
               label: '2026-08-15 傅里叶变换',
               link: '/logs/2026-08-15-fourier-transform/',
             },

@@ -48,6 +48,22 @@
     "fourier-transform/function-inner-product-sampling.drawio": {
       "sha256": "c286d9b1f131b156e1c9e2a8538b59e3ae5a5c7375d222d7ff3dae5f6137eef0",
       "output": "fourier-transform/function-inner-product-sampling.drawio.svg"
+    },
+    "network-flow/traffic-network.drawio": {
+      "sha256": "640d756877955c5aee196ec88449229666b2db0af099a2ecc9447bfd79641ad8",
+      "output": "network-flow/traffic-network.drawio.svg"
+    },
+    "network-flow/two-schemes.drawio": {
+      "sha256": "d001702fb839e2b8da0546c585acfc5906521993b3e0ab9b6e90663daf18849c",
+      "output": "network-flow/two-schemes.drawio.svg"
+    },
+    "network-flow/dispatch-scheme.drawio": {
+      "sha256": "28c69ac5f5c620831d09bbaefe0779a77f0ff9521dc23e3659010d620113f054",
+      "output": "network-flow/dispatch-scheme.drawio.svg"
+    },
+    "network-flow/random-scheme.drawio": {
+      "sha256": "8d4b22507386a95495bc338e8671c9d1bc1026de6fcad30390ac8b6e43e22d22",
+      "output": "network-flow/random-scheme.drawio.svg"
     }
   }
 }
