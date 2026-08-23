@@ -76,6 +76,46 @@
     "network-flow/random-scheme.drawio": {
       "sha256": "8d4b22507386a95495bc338e8671c9d1bc1026de6fcad30390ac8b6e43e22d22",
       "output": "network-flow/random-scheme.drawio.svg"
+    },
+    "network-flow/flow-reversal-new-path.drawio": {
+      "sha256": "48a427022cb61cb31e54517aa6a64ad2cf908b64b6d8b609103340b65d8db4ab",
+      "output": "network-flow/flow-reversal-new-path.drawio.svg"
+    },
+    "network-flow/flow-rerouting-augmentation.drawio": {
+      "sha256": "702114da5534a086febe72376d305e3076679b5de20c2c72629d93a0dd5bcc7b",
+      "output": "network-flow/flow-rerouting-augmentation.drawio.svg"
+    },
+    "network-flow/augmenting-path-reversal.drawio": {
+      "sha256": "7a925cd9dabd78cc19ea51b44572ec5604c65dbf6719948fdb659fdcac9794e5",
+      "output": "network-flow/augmenting-path-reversal.drawio.svg"
+    },
+    "network-flow/same-network-different-cuts.drawio": {
+      "sha256": "c254975653c0feb9a5d4de1da6abc3aeeca0de9cec0f7f0e736d93d06cdcdccc",
+      "output": "network-flow/same-network-different-cuts.drawio.svg"
+    },
+    "network-flow/flow-to-residual-network.drawio": {
+      "sha256": "cc4c64cb5ab5d7503d2a0c3e6e93818f2acce696d210eecbcca842d28b7937fc",
+      "output": "network-flow/flow-to-residual-network.drawio.svg"
+    },
+    "network-flow/terminal-residual-cut.drawio": {
+      "sha256": "8ec4b6f303a280668211841a28ebd8ce9717f0637ce7d9baec281faedc86bf99",
+      "output": "network-flow/terminal-residual-cut.drawio.svg"
+    },
+    "network-flow/edmonds-karp-bfs.drawio": {
+      "sha256": "ef6f6c6c91f89fe13988891a674d1062e2364d864e85b9c0b096ef354f300a0d",
+      "output": "network-flow/edmonds-karp-bfs.drawio.svg"
+    },
+    "network-flow/dinic-level-graph.drawio": {
+      "sha256": "8cfe7a76e34826180943ad423fe150f15a89577256dcefb2825aeb479c4e327e",
+      "output": "network-flow/dinic-level-graph.drawio.svg"
+    },
+    "network-flow/dinic-level-blocking-flow.drawio": {
+      "sha256": "8b6d247388c926ac411b7dcc51e02f7134984d135f8398cad7e97ad30e4508c0",
+      "output": "network-flow/dinic-level-blocking-flow.drawio.svg"
+    },
+    "network-flow/dinic-residual-levels.drawio": {
+      "sha256": "7a1c2d3451762c17ed5612c5afc23a2e0dcda14a45b04901e78b126d09ffe3a0",
+      "output": "network-flow/dinic-residual-levels.drawio.svg"
     }
   }
 }
